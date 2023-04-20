@@ -1,0 +1,54 @@
+use EMS
+create table Department (
+DeptId int not null,
+DeptName varchar(255) not null,
+DeptHead varchar(255) not null,
+foreign key (DeptId) references Employee (EmpID)
+);
+create table Role (
+EmpID int not null,
+RoleName varchar(50) not null,
+RoleObtained date not null,
+foreign key (EmpID) references Employee (EmpID)
+);
+create table Leaves (
+LeaveID int not null,
+EmpID int not null,
+LeaveType varchar(30),
+Startdate date,
+Enddate date,
+Reason varchar(255),
+Status varchar(50),
+foreign key (EmpID) references Employee (EmpID)
+);
+
+
+
+create database EMS;
+
+create table Employee (
+EmpID int NOT NULL,
+FirstName varchar(50) NOT NULL,
+LastName varchar(50) NOT NULL,
+Gender varchar(10) NOT NULL,
+DateofBirth date NOT NULL,
+Email varchar(50) NOT NULL,
+MobileNo int NOT NULL,
+CurrentAddress varchar(255) NOT NULL,
+DateofJoining date NOT NULL,
+Position varchar(50) NOT NULL,
+Salary int NOT NULL,
+Department varchar(50) NOT NULL,
+Manager varchar(50) NOT NULL
+);
+alter table Employee 
+add constraint PK_EmpID primary key (EmpID);
+create table LoginInfo (
+UserID int,
+Username varchar(50),
+Password varchar(50),
+Email varchar(255)
+);
+alter table LoginInfo 
+alter column UserID int not null;
+select * from LoginInfo
